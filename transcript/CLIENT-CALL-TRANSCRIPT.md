@@ -1,77 +1,76 @@
-# Fictional Client Call Transcript: Tiffin Service Ordering App
+# Fictional Client Call Transcript: Food-Ordering E-Commerce App
 
 **Claude Mastery Workshop, 14 Nov 2026 - Requirements Exercise**
 
 > **This transcript is fictional.** It was written for a classroom exercise. The business, the people and every detail in it are invented, and it does not record a real call. Use it to practice turning a messy client conversation into requirements, a small spec and a working first slice.
 
-*Setting: A consultant who builds small software for local businesses speaks with the owner of a tiffin (dabba) lunch delivery service. The call lasts about 20 minutes. Speakers: CONSULTANT and CUSTOMER (Meera, owner of "GharSe Tiffin", an invented business).*
+*Setting: A developer who builds small software for local businesses takes a discovery call from the owner of a small restaurant in Karol Bagh, Delhi. The call lasts about 15 minutes. Speakers: JESU (the developer) and PRANJAL (owner of "Deka's Kitchen", an invented business).*
 
 ---
 
-**CONSULTANT:** Thanks for taking the call. Tell me how orders come in today.
+## Transcript
 
-**CUSTOMER:** Mostly phone calls. Some WhatsApp messages. Whoever is in the office writes it into a Google Sheet. Name, address, how many thalis, veg or non-veg.
+**JESU:** Hello, Pranjal? Jesu here. You said you wanted to talk about getting orders online?
 
-**CONSULTANT:** Walk me through a normal morning.
+**PRANJAL:** Yes, yes. Thanks for calling back. So - I run a small kitchen in Karol Bagh. Lunch and dinner. Thalis, momos, biryani, chowmein. The usual stuff people order every day.
 
-**CUSTOMER:** Calls start around 8. We take orders for lunch the same day. By 10:30 or 11 the kitchen wants the final count, so we stop taking orders. Roughly.
+**JESU:** Okay. And how do orders come in today?
 
-**CONSULTANT:** Roughly?
+**PRANJAL:** Phone calls. Mostly phone calls, some WhatsApp messages. My guy writes them in a register, then at the end of the day someone copies everything into an Excel sheet. Yesterday we found the same order entered twice - one from the register, one from the WhatsApp message. The customer got two thalis and paid for one. (laughs) He was happy. I was not.
 
-**CUSTOMER:** (laughs) Officially 11. But if a regular calls at 11:20, my staff sometimes adds them anyway. Then the kitchen complains they cooked for 60 and we have 64 orders.
+**JESU:** (laughs) Okay, so duplicates are a real problem. What do you want instead?
 
-**CONSULTANT:** How many orders on a typical day?
+**PRANJAL:** Simple thing. A website where the customer sees my menu, picks what they want, and places the order themselves. It goes straight into one system. No register, no copying, no double entry.
 
-**CUSTOMER:** Sixty to eighty. More on Mondays for some reason.
+**JESU:** Got it. Walk me through the menu a bit - how many items are we talking?
 
-**CONSULTANT:** You mentioned the sheet. Any problems with it?
+**PRANJAL:** Around 25-30 items. Veg thali 120, chicken thali 180, momos 80 a plate, chicken biryani 200, chowmein 90. A few combos on weekends. Prices change maybe once in two-three months. I should be able to edit the menu myself - mark something "not available today" when it runs out. That happens with biryani almost every Sunday.
 
-**CUSTOMER:** The same order goes in twice. Someone calls, my helper notes it, then the customer calls again to change something and someone else adds a new row instead of fixing the old one. We find out only when the customer gets two deliveries, or calls angrily at 2 pm.
+**JESU:** So a menu you can edit, with an available/not-available switch. What happens after the customer places an order?
 
-**CONSULTANT:** How do you know which orders are actually confirmed?
+**PRANJAL:** My kitchen should see it immediately - new order, items, quantity, customer name, phone, address. Then we mark it: preparing, then out for delivery, then delivered. The customer should be able to check the status themselves instead of calling me five times. "Where is my order?" - I get this twenty times a day.
 
-**CUSTOMER:** That is the daily headache. The kitchen keeps asking me "what is confirmed?" and I am checking the sheet, then WhatsApp, then the call log. Sometimes an order marked confirmed in the sheet was cancelled on a call and nobody updated it.
+**JESU:** Okay: menu, cart, place order, order status, and a simple kitchen side to move the order along. Now let me tell you what I will NOT build in the first version, and you tell me if that's okay.
 
-**CONSULTANT:** What happens when someone cancels?
+**PRANJAL:** Go ahead.
 
-**CUSTOMER:** If they have paid in advance, we owe them money back. Right now my office boy writes "refund" in a notebook and sends it on UPI when he remembers. Customers keep calling again and again: "did you note my refund?" We have nothing we can show them.
+**JESU:** One - no online payment. No UPI gateway, no card. Cash on delivery only. Payment gateways need documents, verification, and they take a cut. We can add it later.
 
-**CONSULTANT:** If I built you something, what is the one thing it must do?
+**PRANJAL:** Fine. Most of my customers pay cash anyway.
 
-**CUSTOMER:** A small screen. My staff adds an order, and we can see its status. New, confirmed, cancelled. If a lunch is cancelled, staff should be able to record that a refund is requested, so when the customer calls back, anyone in the office can see it.
+**JESU:** Two - no delivery tracking on a map. No rider locations, no live GPS. Your delivery boy is not getting tracked.
 
-**CONSULTANT:** Who uses this screen?
+**PRANJAL:** (laughs) He's my nephew, he would quit. Okay, no maps.
 
-**CUSTOMER:** The office staff. Two, maybe three people. Customers do not need to see it. Maybe later, not now.
+**JESU:** Three - and I want to be very clear here - this will not be Zomato. No restaurant listings, no ratings, no discovery, no commissions page. Just YOUR kitchen, YOUR menu, YOUR orders. One shop, online.
 
-**CONSULTANT:** Do refunds happen inside this screen too? The actual money?
+**PRANJAL:** That's exactly what I want. I don't want to be on Zomato, they take too much commission. I want my own thing. I can put the link on my WhatsApp status and on the menu card.
 
-**CUSTOMER:** No no, money we still send on UPI ourselves. I just want to know it was noted, and that nobody records the same refund twice. That has also happened. We paid a man twice last month.
+**JESU:** Perfect. Now some ground rules from my side. This first version is a demo - we build it with fake menu data and fake orders. No real customer phone numbers go in until the real launch. We test everything with dummy orders - "Test Thali, quantity 50, address: Nowhere".
 
-**CONSULTANT:** What about payments when the order is placed?
+**PRANJAL:** Ha. Okay, dummy orders only until I say go.
 
-**CUSTOMER:** Most customers pay monthly or on delivery. Advance payment is only for bulk orders. Do not build a payment gateway, I do not want that expense.
+**JESU:** And no real money moves in the demo. Ever. When we test payments later, that's a separate step with a separate conversation.
 
-**CONSULTANT:** Would you want customers notified when their order is confirmed?
+**PRANJAL:** Agreed.
 
-**CUSTOMER:** Would be nice. But not if it makes this complicated. First let the screen work.
+**JESU:** Last thing - what does "success" look like to you? If this works, what changes?
 
-**CONSULTANT:** Anything else that goes wrong?
+**PRANJAL:** Simple. In the morning I open one screen and see today's orders. No register, no Excel, no duplicate thalis. And I stop answering "where is my order" twenty times a day - they can check themselves.
 
-**CUSTOMER:** Special cases. A company calls at 11:45 wanting 20 thalis for a meeting, and it is important, so we take it. I do not want software that blocks us from being flexible.
+**JESU:** That's a good spec. Let me write this up as a one-page requirements doc and send it to you. You read it, correct whatever I got wrong, and once you say yes, that's exactly what we build.
 
-**CONSULTANT:** What does success look like in three months?
+**PRANJAL:** Sounds good. When can you send it?
 
-**CUSTOMER:** Less manual checking. Fewer angry calls. I do not want a huge new system that my staff refuses to use. If it saves my office one hour a day, I am happy.
-
-**CONSULTANT:** Last one. If two of your staff add the same order at the same time, what should happen?
-
-**CUSTOMER:** It should not become two orders. Obviously. How you manage that is your job, not mine. (laughs)
-
-*End of transcript.*
+**JESU:** Tomorrow. Talk then.
 
 ---
 
-## For participants
+## What this call gives the workshop (for the facilitator)
 
-Work in pairs. Before writing any code, pull out of this transcript: (1) the stated needs, (2) the assumptions you are making, (3) the questions only the customer can answer, and (4) what is clearly out of scope. Notice what the customer never pinned down: the exact cutoff rule, what counts as a duplicate, who approves a refund, and how "special cases" should actually behave. Ask your instructor, who plays the customer, before you lock your spec.
+- **Items (menu):** veg thali ₹120, chicken thali ₹180, momos ₹80, chicken biryani ₹200, chowmein ₹90, weekend combos; ~25-30 items; owner-editable with an "available today" toggle (biryani sells out on Sundays).
+- **Requirements:** browse menu -> cart -> place order -> customer-visible status (preparing / out for delivery / delivered); kitchen side sees orders immediately and moves them along; one system, no register/Excel copying.
+- **Dos:** simple and mobile-first, owner can edit the menu himself, shareable link (WhatsApp status, menu card), demo built with fictional data and dummy orders only.
+- **Don'ts:** no payment gateway (cash on delivery only), no live delivery/GPS tracking, no Zomato-style marketplace (no listings, ratings, commissions), no real customer data or real money in the demo, no scope creep beyond one kitchen.
+- **Pain points to echo on slides:** duplicate order entry (register + WhatsApp), end-of-day manual copying, "where is my order?" phone calls.
+- **Success definition (the acceptance bar):** one screen with today's orders; no duplicates; customers self-check status.
